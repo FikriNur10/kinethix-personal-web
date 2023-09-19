@@ -12,7 +12,7 @@ function Contact() {
             <h1 className="pb-3 text-3xl text-center font-bold lg:text-3xl md:text-2xl max-sm:text-xl">Contact</h1>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-3 py-14 max-sm:grid-cols-1 max-sm:py-0 md:grid-cols-1 md:py-0">
+        <div className="grid grid-cols-2 gap-3 py-14 xl:grid-cols-2 lg:grid-cols-2 max-sm:grid-cols-1 max-sm:py-0 md:grid-cols-1 md:py-0">
           <div className="h-full row-span-3 p-10 max-sm:p-0 max-sm:py-3" style={{ borderBottom: "1px solid black" }}>
             <h1 className="font-bold text-90 max-sm:text-5xl max-sm:text-right" data-aos="fade-right" data-aos-duration="1500">
               Let's

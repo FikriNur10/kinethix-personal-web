@@ -42,6 +42,7 @@ const ProjectContent = [
     id: 4,
     name: "UI/UX Design SEWALLET",
     desc: "Slice of Art is an e-commerce platform engaged in art. In the context of e-commerce commission art.",
+    longDecs : "",
     type: "UI/UX Design",
     image: sewalletImage,
     Tech: "",
@@ -76,7 +77,6 @@ export const ProjectCard = () => {
           </figcaption>
         </figure>
       ))}
-
       {/* Pop up Project */}
       {selectedProject && (
         <Dialog open={open} handler={handleClose} className="DialogBox">
@@ -97,9 +97,9 @@ export const ProjectCard = () => {
               </div>
             </div>
           </DialogHeader>
-          <DialogBody className="py-3">
-            <div className="grid grid-rows-3 grid-flow-col gap-4">
-              <div className="row-span-3">
+          <DialogBody className="py-2">
+            <div className="grid grid-cols-3 gap-4">
+              <div className="object-cover">
                 <img src={selectedProject.image} alt="image 1" className="object-cover" />
               </div>
               <div className=" bg-white rounded-xl text-black p-5">
