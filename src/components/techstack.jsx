@@ -67,14 +67,21 @@ const TechStack = [
     name: "Figma",
     icon: "fa-brands fa-figma fa-2x",
     placement: "bottom",
+  },
+  {
+    id: 12,
+    name: "Tailwind CSS (Font Awesome doesn't have tailwind icon lol)",
+    icon: "fa-solid fa-wind fa-2x",
+    placement: "bottom",
   }
+
 ];
 
 const Technologies = () => (
   <>
     {TechStack.map((TechStack) => (
       <Tooltip key={TechStack.id} content={TechStack.name} placement={TechStack.placement} id="toolTip" className="max-sm:hidden">
-        <div id="techBox" className="max-sm:w-6 max-sm:h-6">
+        <div id="techBox" className="max-sm:w-6 max-sm:h-6 " style={{ color : 'black', background : 'white' }}>
           <i className={TechStack.icon}></i>
         </div>
       </Tooltip>

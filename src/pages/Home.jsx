@@ -10,29 +10,23 @@ function Home() {
   });
 
   return (
-    <div className="Wrapper w-full h-screen max-sm:h-26">
-      <div className="overflow-hidden py-56 max-sm:py-34 px-5">
-        <div className="w-full h-fit">
-          <div className=" text-black text-center max-sm:text-left md:text-center lg:text-center">
-            <div className="w-auto h-auto max-[900px]:h-4">
-              <p className="text-3xl max-sm:text-xl md:text-md" data-aos="fade-right">
-                Hi, I'm Fikri Nur Diega
-              </p>
-            </div>
-            <div className="w-auto h-auto py-5 max-sm:h-30" data-aos="fade-left">
-              <h1 className="text-5xl font-semibold max-sm:text-4xl">
-                <AnimatedText initialText="I'm Web Developer" />
-              </h1>
-            </div>
-            <div className="w-auto h-auto max-[900px]:h-4">
-              <p className="text-3xl max-sm:text-xl md:text-md" data-aos="fade-right">
-                From Tangerang, Indonesia
-              </p>
-            </div>
-          </div>
+    <div className="homeWrapper w-full h-screen max-sm:h-24">
+    <div className="overflow-hidden px-5 2xl:py-[320px] xs:py-[300px] max-xs:py-[200px]">
+      <div className="wrapper text-center font-bold uppercase 2xl:text-[20px] 2xl:flex xs:grid xs:grid-rows-2	max-xs:grid max-xs:grid-rows-2">
+        <div className="words grid 2xl:h-[25px]">
+            <span>Website Developer</span>
+            <span>I'm Fikri Nur Diega</span>
+            <span>UI and UX Designer</span>
+            <span>Graphic Designer</span>
+            <span>Website Developer</span>
+        </div>
+        <div className="additional-text">
+            <p className="pl-2 drop-shadow-glow">with a passion for creating engaging and interactive online experiences. </p>
         </div>
       </div>
     </div>
+</div>
+
   );
 }
 

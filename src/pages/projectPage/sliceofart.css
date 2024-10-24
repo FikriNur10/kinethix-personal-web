@@ -1,0 +1,11 @@
+.HeaderBackground{
+    background-image: url('/src/images/projectImages/sliceOfArt/soa_cover.jpg'); /* Gambar background */
+    background-size: cover; /* Sesuaikan ukuran background */
+    background-position: center; /* Posisikan background di tengah */
+    padding: 100px; /* Jarak dalam */
+    color: #333; /* Warna teks */
+    width: 100%; /* Lebar */
+    height: fit-content; /* Tinggi */
+    transform: scale(1.0);
+    
+}

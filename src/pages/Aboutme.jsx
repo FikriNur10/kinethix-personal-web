@@ -1,93 +1,226 @@
 import "../App.css";
 import Profile from "../images/Profile picture_2.jpg";
 import { Tooltip, IconButton } from "@material-tailwind/react";
-import { TwitterTweetEmbed } from "react-twitter-embed";
 import QrInstagram from "../images/fikrinurdiega__qr.png";
 import Technologies from "../components/techstack";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "aos/dist/aos.css";
 
 function Aboutme() {
+  const [scale, setScale] = useState(1); // Default scale 1 (tanpa zoom)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const zoomFactor = 1 + scrollPosition * 0.001; // Menambah skala seiring scroll
+      setScale(zoomFactor);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll); // Bersihkan listener saat component unmount
+    };
+  }, []);
   return (
-    <div className="Wrapper py-28 max-sm:py-10">
-      <div className="grid grid-cols-1 gap-3 md:grid-cols-3 max-xs:grid-cols-1 max-sm:grid-cols-1 max-sm:gap-x-0 max-sm:gap-y-2">
-        {/* Headline */}
-        <div className="col-span-1 md:col-span-3" data-aos="fade-down" data-aos-duration="1000">
-          <div className="w-full h-20 bg-white rounded-xl shadow-md overflow-hidden max-sm:w-full max-sm:h-14">
-            <div className="py-5 max-sm:py-3">
-              <h1 className="pb-3 text-3xl text-center font-bold lg:text-3xl md:text-2xl max-sm:text-xl">About Me</h1>
-            </div>
-          </div>
-        </div>
+    <div className="Wrapper py-60 max-sm:py-10">
+      <div className="grid grid-cols-4 gap-6 text-white md:grid-cols-3 max-xs:grid-cols-1 max-sm:grid-cols-1 max-sm:gap-x-0 max-sm:gap-y-2">
         {/* Photo */}
-        <div className="col-span-1 md:col-span-1" data-aos="fade-right" data-aos-duration="1500">
-          <div className="w-full h-fit md:h-full  2xl:h-full max-lg:h-fit 2xl:pt-0 lg:pt-52 bg-white rounded-xl shadow-md overflow-hidden">
-            <img className="w-full h-fit scale-100 object-cover 2xl:scale-150 lg:scale-300" src={Profile} alt="Its me" />
+        <div
+          className="col-span-1 md:col-span-1"
+          data-aos="fade-right"
+          data-aos-duration="1500"
+        >
+          <div className="w-full h-fit md:h-full  2xl:h-full max-lg:h-fit 2xl:pt-0 lg:pt-52 shadow-md overflow-hidden hover:drop-shadow-glow">
+            <img
+              className="w-full h-fit scale-100 object-cover 2xl:scale-150 lg:scale-300 "
+              src={Profile}
+              alt="Its me"
+              style={{ transform: `scale(${scale})` }}
+            />
           </div>
         </div>
         {/* Intro Text */}
-        <div className="col-span-1 md:col-span-2" data-aos="fade-left" data-aos-duration="1800">
-          <div className="w-full h-full bg-white px-10 py-8 rounded-xl shadow-md overflow-hidden 2xl:h-full lg:h-fit max-md:py-0 max-md:px-2 md:py-5 md:px-5 max-sm:px-1 max-sm:py-0">
-            <div className="px-5 py-6 lg:py-12 md:px-7 md:py-7 max-xs:py-10">
-              <h1 className="pb-3 text-2xl font-bold 2xl:text-3xl min-lg:text-2xl max-md:text-2xl max-sm:text-xl">Hello, I'm Fikri Nur Diega</h1>
-              <p className="text-2xl lg:text-1xl min-lg:text-base max-md:text-base max-sm:text-lg max-xs:text-base">
-                I'm a Web Developer with a passion for creating engaging and interactive online experiences. With my extensive experience in Web development, I am determined to provide creative solutions and present outstanding designs to
-                users. Passionate about Web Development and Innovation Technology, with an overall experience of 3 years in Web Development I have gathered experience in the field of Web Development.
-              </p>
-            </div>
+        <div
+          className="col-span-1 md:col-span-2"
+          data-aos="fade-left"
+          data-aos-duration="1800"
+        >
+          <div className="hover:drop-shadow-glow w-full h-full px-10 shadow-md overflow-hidden 2xl:h-full lg:h-fit max-md:py-0 max-md:px-2 md:px-5 max-sm:px-1 max-sm:py-0">
+            <h1 className="font-bold text-right 2xl:text-right 2xl:text-[40px] xs:text-[30px] max-xs:text-[30px] max-xs:text-left xs:text-left">
+              I'm Fikri Nur Diega
+            </h1>
+            <p className="text-normal leading-loose 2xl:text-[24px] 2xl:text-justify xs:text-justify max-xs:text-justify">
+              I'm a Web Developer with a passion for creating engaging and
+              interactive online experiences. With my extensive experience in
+              Web development, I am determined to provide creative solutions and
+              present outstanding designs to users. Passionate about Web
+              Development and Innovation Technology, with an overall experience
+              of 3 years in Web Development I have gathered experience in the
+              field of Web Development.
+            </p>
           </div>
         </div>
         {/* Tech Stack */}
-        <div className="col-span-1 md:col-span-1 lg:col-span-2" data-aos="fade-right" data-aos-duration="1500">
-          <div className="w-full h-fit bg-white py-10 rounded-xl shadow-md overflow-hidden max-sm:w-full max-sm:h-fit max-sm:py-8">
-            <h1 className="text-3xl text-center font-bold lg:text-3xl md:text-2xl max-sm:text-2xl">Tech Stack</h1>
-            <div className="grid grid-cols-6 justify-items-center gap-y-4 px-5 py-6 2xl:px-24 lg:px-8 max-md:grid-cols-4 md:px-36 max-sm:grid-cols-3 max-sm:px-8 max-sm:py-6 max-xs:px-6">
+        <div
+          className="col-span-1 md:col-span-1 lg:col-span-2 pt-10"
+          data-aos="fade-right"
+          data-aos-duration="1500"
+        >
+          <p className="tracking-wide uppercase pb-3 font-bold 2xl:text-[40px] xs:text-[30px] max-xs:text-[30px] max-xs:text-left xs:text-left">
+            Tech Stack
+          </p>
+          <div className="hover:drop-shadow-glow w-full h-fit border-2 shadow-md overflow-hidden max-sm:w-full max-sm:h-fit max-sm:py-8">
+            <div className="grid grid-cols-6 justify-items-center gap-y-4 px-5 py-6 2xl:px-0 lg:px-8 max-md:grid-cols-4 md:px-36 max-sm:grid-cols-3 max-sm:px-8 max-sm:py-6 max-xs:px-6">
               <Technologies />
-              <Tooltip content="Tailwind CSS" placement="right" id="toolTip">
-                <div id="techBox">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" id="tailwind-css" className="scale-200">
-                    <path d="M18.5 9.51a4.22 4.22 0 0 1-1.91-1.34A5.77 5.77 0 0 0 12 6a4.72 4.72 0 0 0-5 4 3.23 3.23 0 0 1 3.5-1.49 4.32 4.32 0 0 1 1.91 1.35A5.77 5.77 0 0 0 17 12a4.72 4.72 0 0 0 5-4 3.2 3.2 0 0 1-3.5 1.51zm-13 4.98a4.22 4.22 0 0 1 1.91 1.34A5.77 5.77 0 0 0 12 18a4.72 4.72 0 0 0 5-4 3.23 3.23 0 0 1-3.5 1.49 4.32 4.32 0 0 1-1.91-1.35A5.8 5.8 0 0 0 7 12a4.72 4.72 0 0 0-5 4 3.2 3.2 0 0 1 3.5-1.51z"></path>
-                  </svg>
-                </div>
-              </Tooltip>
             </div>
           </div>
         </div>
-        {/* Social Media */}
-        <div className="col-span-1 md:col-span-1" data-aos="fade-left" data-aos-duration="1900">
-          <div className="w-full h-full bg-white rounded-xl shadow-md overflow-hidden max-sm:w-full">
-            <div className="p-10 max-sm:px-4 max-sm:py-10">
-              <h1 className="text-3xl text-center font-bold 2xl:text-3xl lg:text-2xl md:text-2xl max-sm:text-2xl">Social Media</h1>
-              <div className="grid grid-cols-3 justify-items-center gap-x-0 gap-y-3 px-5 py-5 2xl:grid-cols-3 2xl:px-10 2xl:py-5 lg:grid-cols-2 lg:px-0 md:px-10 max-sm:px-10 max-sm:py-6 max-xs:px-6">
-                {/* Linkedin*/}
-                <a href="https://www.linkedin.com/in/fikrinurdiega/">
-                  <IconButton id="socialBox" className="fa-brands fa-linkedin-in fa-2xl bg-[#333333] hover:shadow-[#333333]/20 focus:shadow-[#333333]/20 active:shadow-[#333333]/10 "></IconButton>
-                </a>
-                {/* Github */}
-                <a href="https://github.com/FikriNur10">
-                  <IconButton id="socialBox" className="fab fa-github fa-2xl bg-[#333333] hover:shadow-[#333333]/20 focus:shadow-[#333333]/20 active:shadow-[#333333]/10"></IconButton>
-                </a>
-                {/* Instagram */}
-                <Tooltip content={<img src={QrInstagram} alt="Instagram QR Code" />} placement="top" className="w-44 h-44 bg-white rounded-lg drop-shadow-md max-sm:hidden">
-                  <a href="https://www.instagram.com/fikrinurdiega_/">
-                    <IconButton id="socialBox" className="fab fa-instagram fa-2xl bg-[#333333] hover:shadow-[#333333]/20 focus:shadow-[#333333]/20 active:shadow-[#333333]/10"></IconButton>
-                  </a>
-                </Tooltip>
-                {/* Twitter */}
-                <Tooltip
-                  content={
-                    <div className="w-60 h-60 bg-white rounded-lg drop-shadow-md p-2 max-sm:hidden">
-                      <TwitterTweetEmbed tweetId="1627762443417169922" /> {/* Replace with your tweet's ID */}
-                    </div>
-                  }
-                  placement="top"
-                >
-                  <a href="https://twitter.com/kinethixcreated">
-                    <IconButton id="socialBox" className="fa-brands fa-twitter fa-2xl bg-[#333333] hover:shadow-[#333333]/20 focus:shadow-[#333333]/20 active:shadow-[#333333]/10"></IconButton>
-                  </a>
-                </Tooltip>
-              </div>
+        {/* Education */}
+        <div
+          className="hover:drop-shadow-glow row-span-4 md:col-span-1"
+          data-aos="fade-left"
+          data-aos-duration="1900"
+        >
+          <div className="mt-5 w-full h-full shadow-md overflow-hidden max-sm:w-full">
+            <h1 className="uppercase pb-3 tracking-wide text-3xl text-right font-bold 2xl:text-[35px] xs:text-[30px] max-xs:text-[30px] max-xs:text-left xs:text-left">
+              Work Experience
+            </h1>
+            <div className="border-2 p-5 max-sm:px-4 max-sm:py-10">
+              <ol class="relative border-s border-gray-200 dark:border-gray-700">
+                <li class="mb-4 ms-4">
+                  <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                  <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                    Freelance
+                  </time>
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    Web Developer
+                  </h3>
+                  <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                    Engaging and responsive user interfaces are created using
+                    HTML, CSS, and JavaScript. Robust systems are developed with
+                    React JS, Codeigniter and Laravel
+                  </p>
+                </li>
+                <li class="mb-4 ms-4">
+                  <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                  <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                    PT. Indonesia Toray Synthetics
+                  </time>
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    Data Migration Analyst (Project Based)
+                  </h3>
+                  <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                    In-depth analysis of existing data is conducted to identify
+                    and resolve inconsistencies, inaccuracies, and anomalies.
+                    Excel functions and tools are utilized to develop and
+                    implement data cleansing strategies, ensuring optimal data
+                    integrity and quality
+                  </p>
+                </li>
+                <li class="mb-4 ms-4">
+                  <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                  <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                    MGI Esports Media
+                  </time>
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    Graphic Designer
+                  </h3>
+                  <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                    Creates visually stunning and relevant graphic designs
+                    tailored to the needs of esports clients, working
+                    independently as a freelancer while collaborating closely
+                    with MGI Esports Media's creative team
+                  </p>
+                </li>
+                <li class="ms-4">
+                  <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                  <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                    PT. Indonesia Toray Synthetics
+                  </time>
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                    Information System Staff Intern
+                  </h3>
+                  <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                    Gain practical experience in managing and supporting the
+                    company's IT infrastructure by assisting with maintenance
+                    and troubleshooting of hardware and software systems
+                  </p>
+                </li>
+              </ol>
             </div>
+          </div>
+        </div>
+        {/* Award & Certification */}
+        <div
+          className="hover:drop-shadow-glow md:col-span-1 lg:col-span-2 pt-10"
+          data-aos="fade-right"
+          data-aos-duration="1500"
+        >
+          <p className="pb-3 tracking-wide uppercase font-bold 2xl:text-[40px] xs:text-[25px] max-xs:text-[25px] max-xs:text-left xs:text-left">
+            Award & Certification
+          </p>
+          <div className="p-10 w-full h-fit border-2 shadow-md overflow-hidden max-sm:w-full max-sm:h-fit max-sm:py-8">
+            <ol class="relative border-s border-gray-200 dark:border-gray-700">
+              <li class="mb-10 ms-6">
+                <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                  <svg
+                    class="w-4 h-4 text-blue-500"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 26 26"
+                    aria-hidden="true"
+                  >
+                    <path d="M20 2H4a2 2 0 00-2 2v16a2 2 0 002 2h16a2 2 0 002-2V4a2 2 0 00-2-2zm-1 16H5v-2h14v2zm0-4H5v-2h14v2zm0-4H5V8h14v2z" />
+                  </svg>
+                </span>
+                <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                  Scrum Foundation Professional Certification SFPC{" "}
+                  <span class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ms-3">
+                    Certified
+                  </span>
+                </h3>
+                <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                  Released on November 17th, 2023
+                </time>
+                <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                  The Scrum Foundation Professional Certification (SFPC) is an
+                  entry-level certification that validates a fundamental
+                  understanding of Scrum principles, practices, and roles. It
+                  demonstrates proficiency in applying Scrum methodologies to
+                  enhance teamwork, productivity, and project management.
+                </p>
+              </li>
+              <li class="mb-10 ms-6">
+                <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+                  <svg
+                    class="w-5 h-5 text-yellow-500"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 2a7 7 0 100 14 7 7 0 000-14zm0 12a5 5 0 110-10 5 5 0 010 10zm-6 5v2l2-1 2 1v-2h-4zm10 0v2l2-1 2 1v-2h-4z" />
+                  </svg>
+                </span>
+                <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                  2nd IT Support Competition at Tangerang Raya Kompeten
+                  <span class="bg-yellow-400 text-black text-sm font-medium me-2 px-2.5 py-0.5 rounded ms-3">
+                    Award
+                  </span>
+                </h3>
+                <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                  Released on December 18th, 2020
+                </time>
+                <p class="text-base font-normal text-gray-500 dark:text-gray-400">
+                  The 2nd IT Support Competition at Tangerang Raya Kompeten is a
+                  regional competition that tests participants' technical skills
+                  and problem-solving abilities in IT support. It brings
+                  together talented individuals to showcase their expertise in
+                  troubleshooting and IT infrastructure management.
+                </p>
+              </li>
+            </ol>
           </div>
         </div>
       </div>

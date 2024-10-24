@@ -3,38 +3,103 @@
 @tailwind utilities;
 
 body {
-  height: 100vh;
-  width: 100%;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  background-color: #f2e6c9;
+  font-family: "Noto Sans", sans-serif;
   color: #36322a;
 }
 
 nav {
   display: flex;
   align-items: center;
-  justify-content: center;
-  position: relative;
-  background-color: #f4e0b9;
-  border-bottom: #000000 1px solid;
+  justify-content: space-between;
+  position: fixed;  /* Menetapkan navbar agar tetap di atas */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  background-color: transparent;  /* Transparansi penuh */
+  z-index: 1000;  /* Pastikan navbar berada di atas elemen lainnya */
 }
 
-.homeSection .Wrapper {
-  border-left: #000000 1px solid;
-  border-right: #000000 1px solid;
+.homeSection{
+  background-color: #000000;
+  background-size: cover;
+  background-repeat: no-repeat; /* Agar gambar tidak terulang */
+  background-position: center;  /* Memposisikan gambar di tengah */
+
 }
+
+.wrapper{
+  box-sizing: content-box;
+  height: 50px;
+  padding: 50px 10px;
+  display: flex;
+  border-radius: 8px;
+  box-shadow: 0 20px 25px rgba(0,0,0,0.2);
+  color: white;;
+}
+.words{
+  overflow: hidden;
+}
+.wrapper span{
+  display: block;
+  height: 100%;
+  padding-left: 10px;
+  animation: spin_words 6s infinite;
+}
+@keyframes spin_words{
+  10%{
+      transform: translateY(-102%);
+  }
+  25%{
+      transform: translateY(-100%);
+  }
+  35%{
+      transform: translateY(-200%);
+  }
+  50%{
+      transform: translateY(-200%);
+  }
+  60%{
+      transform: translateY(-300%);
+  }
+  75%{
+      transform: translateY(-300%);
+  }
+  85%{
+      transform: translateY(-400%);
+  }
+  100%{
+      transform: translateY(-400%);
+  }
+}
+
+
+.aboutMarquee{
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
 
 .introSection {
   border-top: #000000 1px solid;
   border-bottom: #000000 1px solid;
-  background-color: #f4e0b9;
+  /* background-image: url('/src/images/backgroundBlack.jpg'); */
+  background-color: #000000;
+  background-size: cover;
+
 }
+
 
 #socialBox {
   width: 64px;
   height: 64px;
-  background-color: #f4e0b9;
-  color: #36322a;
+  background-color: #000000;
+  color: #ffffff;
   border-radius: 10px;
   padding: 20px 18px;
 }
@@ -42,9 +107,6 @@ nav {
 #techBox {
   width: 64px;
   height: 64px;
-  background-color: #f4e0b9;
-  color: #36322a;
-  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,18 +119,24 @@ nav {
 }
 
 #toolTip {
-  background-color: #36322a;
-  border-radius: 5px;
-  color: #f4e0b9;
+  background-color: #000000;
+  border-radius: 0px;
+  color: #ffffff;
   font-weight: bold;
 }
 
+.projectSection{
+  background-image: url('/src/images/backgroundBlack.jpg');
+  background-size: cover;
+  background-color: black;
+}
+
 #projectCard {
-  width: 296px;
+  width: 100%;
   height: 450px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.15);
   transition: all 1s ease-out;
+  
 }
 
 #projectButton {
@@ -81,11 +149,7 @@ nav {
   justify-content: left; /* Center content horizontally */
   align-items: center; /* Center content vertically */
 }
-.projectSection {
-  border-top: #000000 1px solid;
-  border-bottom: #000000 1px solid;
-  height: fit-content;
-}
+
 .DialogBox {
   width: 100%;
   height: 100vh;
@@ -94,7 +158,7 @@ nav {
   position: fixed;
   border-radius: 10px;
   transition: all 1s ease-out;
-  padding: 50px 145px;
+  padding: 30px 145px;
 }
 
 .fade-in-out {
@@ -108,8 +172,27 @@ nav {
   visibility: visible; /* Make the element visible */
 }
 
-.footer{
+.footer {
   height: 250px;
-  background-color: #f4e0b9;
-  color: black;
+  background-color: #000000;
+  color: white;
+}
+
+.contactSection{
+  background-image: url('/src/images/Background.jpg');
+  background-size: cover;
+  background-color: black;
+}
+
+#contactsHover {
+  box-shadow: inset 0 0 0 0 #ffffff;
+  color: white;
+  margin: 0 0rem;
+  padding: 0 0.25rem;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+#contactsHover:hover{
+  box-shadow: inset 600px 0 0 0 #ffffff;
+  color: rgb(34, 34, 34);
 }

@@ -31,7 +31,7 @@ const AnimatedText = ({ initialText }) => {
     }, 25);
   };
 
-  return <h1 onMouseOver={handleMouseOver}>{text}</h1>;
+  return <h1 onMouseOver={handleMouseOver}>HELLO, I'M {text}</h1>;
 };
 
 export default AnimatedText;
