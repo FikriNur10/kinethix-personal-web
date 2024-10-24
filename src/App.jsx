@@ -10,6 +10,7 @@ import ProjectMarquee from "./components/projectMarquee";
 import ContactMarquee from "./components/contactMarquee";
 import { Helmet } from "react-helmet";
 
+
 function App() {
   return (
     <>
