@@ -126,7 +126,6 @@ nav {
 }
 
 .projectSection{
-  background-image: url('/src/images/backgroundBlack.jpg');
   background-size: cover;
   background-color: black;
 }
@@ -179,7 +178,6 @@ nav {
 }
 
 .contactSection{
-  background-image: url('/src/images/Background.jpg');
   background-size: cover;
   background-color: black;
 }
