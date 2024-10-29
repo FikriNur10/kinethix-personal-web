@@ -14,34 +14,35 @@ function Home() {
     AOS.init({ duration: 2000 });
   });
 
-  const container = useRef();
+  const main = useRef();
   useGSAP(
     () => {
-      ScrollTrigger.create({
-        trigger: ".textBox",
-        start: "top top",
-        end: "+=200",
-        pin: true,
-        markers: true,
-        startColor: "white",
-        endColor: "black",
-        ease: "none",
-        scrub: 1,
+      const boxes = gsap.utils.toArray(".textBox");
+      boxes.forEach((box) => {
+        gsap.to(box, {
+          y: 70,
+          scrollTrigger: {
+            trigger: box,
+            start: "center center",
+            end: "bottom 40%",
+            scrub: true,
+            // markers: true,
+          },
+        });
       });
     },
-    { scope: container }
+    { scope: main }
   );
-
   return (
-    <div className="homeWrapper w-full h-screen max-sm:h-24 ref={container}">
+    <div
+      className="homeWrapper w-full h-screen max-sm:h-24"
+      ref={main}
+    >
       <div
         className="overflow-hidden px-5 2xl:py-[320px] xs:py-[300px] max-xs:py-[200px]"
-        ref={container}
+        ref={main}
       >
-        <div
-          className="wrapper textBox text-center font-bold uppercase 2xl:text-[20px] 2xl:flex xs:grid xs:grid-rows-2	max-xs:grid max-xs:grid-rows-2"
-          data-speed="0.5"
-        >
+        <div className="wrapper textBox text-center justify-center font-bold uppercase 2xl:text-[20px] 2xl:flex xs:grid xs:grid-rows-2	max-xs:grid max-xs:grid-rows-2">
           <div className="words grid 2xl:h-[25px]">
             <span>Website Developer</span>
             <span>I'm Fikri Nur Diega</span>

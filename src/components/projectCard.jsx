@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../App.css";
 import { Button, Dialog, DialogHeader, DialogBody, DialogFooter, Carousel } from "@material-tailwind/react";
 import "aos/dist/aos.css";
 // Image Import
+import KinethixLogo from "../images/Kinethix_White.png";
 // Slice of Art
+import soaCover from "../images/projectImages/sliceOfArt/soa_cover.png";
 import soaPhoto from "../images/projectImages/sliceOfArt/soa_Home.webp";
 import soaPhoto2 from "../images/projectImages/sliceOfArt/soa_1920.webp";
 import soaPhoto3 from "../images/projectImages/sliceOfArt/soa_WorkList.webp";
@@ -65,11 +67,11 @@ const ProjectContent = [
     type: "Web Development",
     longDecs:
       "Slice of Art is an e-commerce platform that operates in the art sector. In the context of e-commerce commissioned art, the name “Slice of Art” is a representation of the pieces of art that are available for sale on this platform. The name “Slice of Art” can be interpreted as a slice of the larger world of art available for users of this platform to enjoy.The name can also reflect that this platform provides unique and original art products and works of art, so that every piece of art sold on the platform has uniqueness and unique artistic value. So the name is enough to explain that this platform provides a space for artists to be able to promote commission art services, that is, clients/customers can order art work creation services from an artist by requesting what kind of work they want.",
-    image: [soaPhoto, soaPhoto2, soaPhoto3, soaPhoto4, soaPhoto5, soaPhoto6, soaPhoto7],
+    image: [soaCover, soaPhoto, soaPhoto2, soaPhoto3, soaPhoto4, soaPhoto5, soaPhoto6, soaPhoto7],
     Tech: [Technologies[0], Technologies[1]],
     transition: "fade-right",
     durations: "2000",
-    padding: "pb-28",
+    hovercolor: "bg-[#240750]",
   },
   {
     id: 2,
@@ -82,7 +84,7 @@ const ProjectContent = [
     Tech: "",
     transition: "fade-left",
     durations: "1000",
-    padding: "pb-28",
+    hovercolor: "bg-[#6EACDA]",
   },
   {
     id: 3,
@@ -105,7 +107,7 @@ const ProjectContent = [
     Tech: "",
     transition: "fade-right",
     durations: "1000",
-    padding: "pb-28",
+    hovercolor: "bg-[#A0153E]",
   },
   {
     id: 4,
@@ -118,7 +120,7 @@ const ProjectContent = [
     Tech: "",
     transition: "fade-left",
     durations: "2000",
-    padding: "pb-28",
+    hovercolor: "bg-[#4B70F5]",
   },
   {
     id: 5,
@@ -131,7 +133,7 @@ const ProjectContent = [
     Tech: "",
     transition: "fade-right",
     durations: "2000",
-    padding: "pb-28",
+    hovercolor: "bg-[#021526]",
   },
 ];
 
@@ -159,67 +161,88 @@ export const ProjectCard = () => {
   const prevImage = () => {
     setActiveIndex((prevIndex) => (prevIndex - 1 + selectedProject.image.length) % selectedProject.image.length);
   };
+
+  const [cursorX, setCursorX] = useState();
+  const [cursorY, setCursorY] = useState();
+
+  window.addEventListener("mousemove", (e) => {
+    setCursorX(e.pageX);
+    setCursorY(e.pageY);
+  });
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
   return (
     <>
       {ProjectContent.map((project) => (
         <figure
           key={project.id}
-          className={`w-full px-5 ${project.padding}`}
+          className={`relative`} // Tambahkan 'relative' untuk positioning
           id="projectCard"
           onClick={() => handleOpen(project)}
-          data-aos={project.transition}
-          data-aos-duration={project.durations}
         >
           <img
-            className="h-full w-full object-cover object-center grayscale hover:grayscale-0 hover:animate-pulse cursor-pointer "
+            className={
+              "h-full w-full object-cover object-center grayscale hover:grayscale-0 hover:animate-pulse transition-all duration-300"
+            }
             src={project.image[0]}
             alt="nature image"
           />
-          <div className="py-2">
-            <a className="font-bold text-white font-sans border-none drop-shadow-lg 2xl:text-[25px] xs:text-[20px] max-xs:text-[20px] ">
+          {/* Elemen untuk teks overlay */}
+          <span
+            className={`absolute inset-0 content-end ${project.hovercolor} bg-opacity-100 opacity-0 hover:opacity-100 transition-opacity duration-300 `}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <h1
+              className={` bottom-0 left-0 w-full text-white font-semibold 2xl:text-[35px] uppercase p-2 px-5 bg-none bg-opacity-60 transition-transform duration-1000 md:text-[20px] max-sm:text-[20px] ${
+                isHovered ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+              }`}
+            >
               {project.name}
-            </a>
-            <p className="drop-shadow-lg text-white font-sans text-[20px]">{project.type}</p>
-          </div>
+            </h1>
+          </span>
         </figure>
       ))}
+
       {/* Pop up Project */}
       {selectedProject && (
         <Dialog
           open={open}
           handler={handleClose}
-          className="DialogBox"
+          className="DialogBox max-sm:px-0 2xl:py-5 2xl:px-10 max-sm:overflow-y-auto"
         >
-          <DialogHeader>
-            <div className="flex gap-8 justify-center">
-              <div className="flex-none w-32 flex items-center">
-                <div className="items-start">Kinethix</div>
+          <DialogHeader className="px-10">
+            <div className="grid grid-cols-3 items-center text-center w-full gap-3 max-sm:gap-2">
+              <div className="flex justify-start">
+                <img
+                  src={KinethixLogo}
+                  alt="Kinethix Logo"
+                  className="w-[50px] max-sm:w-[40px]"
+                />
               </div>
-              <div
-                className="grow text-center flex items-center"
-                style={{ width: "900px" }}
-              >
-                <div className="mx-auto">{selectedProject.name}</div>
+              <div className="flex justify-center items-center">
+                <h1 className="text-lg font-semibold max-sm:text-[15px]">{selectedProject.name}</h1>
               </div>
-              <div className="w-32 flex justify-end items-end">
-                <div className="items-end">
-                  <Button
-                    variant="text"
-                    color="red"
-                    onClick={handleClose}
-                  >
-                    <span>X</span>
-                  </Button>
-                </div>
+              <div className="flex justify-end items-center">
+                <Button
+                  variant="text"
+                  color="red"
+                  onClick={handleClose}
+                  className="text-lg max-sm:text-[20px]"
+                >
+                  <span>X</span>
+                </Button>
               </div>
             </div>
           </DialogHeader>
-          <DialogBody className="py-10 h-screen">
-            <div className="grid grid-cols-2 gap-5 max-sm:grid-cols-1">
-              <div className="row-span-1 w-600 h-600 2xl:pt-0 lg:pt-52 bg-white shadow-md overflow-hidden">
-                {/* <img className="w-full h-fit scale-100 mt-10 object-cover" src={selectedProject.image[1]} alt="Its me" /> */}
+          <DialogBody className="py-3 h-screen max-sm:py-0 max-sm:h-auto px-10">
+            <div className="grid grid-cols-2 gap-5 max-sm:grid-cols-1 max-sm:gap-2">
+              <div className="row-span-1 bg-white shadow-md 2xl:w-full 2xl:h-[670px] overflow-hidden sm:w-200 sm:h-200">
                 <Carousel
-                  className=" scale-100 object-cover"
+                  className="scale-100 object-cover overflow-hidden"
                   navigation={() => (
                     <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
                       <button
@@ -240,25 +263,25 @@ export const ProjectCard = () => {
                   <img
                     src={selectedProject.image[activeIndex]}
                     alt={`image ${activeIndex + 1}`}
-                    className="h-full w-full object-cover"
+                    className="object-cover"
                   />
                 </Carousel>
               </div>
-              <div className="rounded-xl h-full text-black bg-white p-10 text-justify font-medium">
+              <div className="rounded-xl h-full text-black bg-white p-10 text-justify font-medium max-sm:p-5">
                 <div>
-                  <h1 className="text-2xl font-bold pb-3">About Project</h1>
+                  <h1 className="text-2xl font-bold pb-3 max-sm:text-xl">About Project</h1>
                 </div>
                 <div>
                   <p>{selectedProject.longDecs}</p>
                 </div>
                 {/* <div>
-                  <h1 className="text-2xl font-bold py-3">Tech Stack</h1>
-                </div>
-                <div className="bg-slate-800 grid grid-flow-col gap-2">
-                  {selectedProject.Tech.map((tech) => (
-                    <div className="w-10 h-10 bg-red-300 items-center justify-center" key={tech.id}>{tech.content}</div>
-                  ))}
-                </div> */}
+            <h1 className="text-2xl font-bold py-3 max-sm:text-xl">Tech Stack</h1>
+          </div>
+          <div className="bg-slate-800 grid grid-flow-col gap-2">
+            {selectedProject.Tech.map((tech) => (
+              <div className="w-10 h-10 bg-red-300 items-center justify-center" key={tech.id}>{tech.content}</div>
+            ))}
+          </div> */}
               </div>
             </div>
           </DialogBody>

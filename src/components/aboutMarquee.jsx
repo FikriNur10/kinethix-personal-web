@@ -9,37 +9,37 @@ function AboutMarquee() {
       <div className="animate-marquee whitespace-nowrap uppercase text-3xl">
         <span className="mx-4">About Me</span>
         <span className="mx-4">
-          <i className="fa-regular fa-address-card animate-spin1"></i>
+          <i className="fa-solid fa-sun animate-spin1"></i>
         </span>
         <span className="mx-4">About Me</span>
         <span className="mx-4">
-          <i class="fa-regular fa-address-card animate-spin-slow"></i>
+          <i class="fa-solid fa-sun animate-spin-slow"></i>
         </span>
         <span className="mx-4">About Me</span>
         <span className="mx-4">
-          <i class="fa-regular fa-address-card animate-spin-slow"></i>
+          <i class="fa-solid fa-sun animate-spin-slow"></i>
         </span>
         <span className="mx-4">About Me</span>
         <span className="mx-4">
-          <i class="fa-regular fa-address-card animate-spin-slow"></i>
+          <i class="fa-solid fa-sun animate-spin-slow"></i>
         </span>
       </div>
       <div className="absolute top-0  animate-marquee2 whitespace-nowrap uppercase text-3xl">
         <span className="mx-4">About Me</span>
         <span className="mx-4">
-          <i className="fa-regular fa-address-card animate-spin-slow"></i>
+          <i className="fa-solid fa-sun animate-spin-slow"></i>
         </span>
         <span className="mx-4">About Me</span>
         <span className="mx-4">
-          <i class="fa-regular fa-address-card animate-spin-slow"></i>
+          <i class="fa-solid fa-sun animate-spin-slow"></i>
         </span>
         <span className="mx-4">About Me</span>
         <span className="mx-4">
-          <i class="fa-regular fa-address-card animate-spin-slow"></i>
+          <i class="fa-solid fa-sun animate-spin-slow"></i>
         </span>
         <span className="mx-4">About Me</span>
         <span className="mx-4">
-          <i class="fa-regular fa-address-card animate-spin-slow"></i>
+          <i class="fa-solid fa-sun animate-spin-slow"></i>
         </span>
       </div>
     </div>

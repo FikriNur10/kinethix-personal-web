@@ -8,8 +8,8 @@ import Footer from "./components/footer";
 import AboutMarquee from "./components/aboutMarquee";
 import ProjectMarquee from "./components/projectMarquee";
 import ContactMarquee from "./components/contactMarquee";
+import Preloader from "./components/preloader";
 import { Helmet } from "react-helmet";
-
 
 function App() {
   return (
@@ -34,6 +34,7 @@ function App() {
             rel="stylesheet"
           />
         </Helmet>
+        <Preloader />
         <Header />
         <section className="homeSection h-screen w-full px-0 overflow-hidden sm:px-10 md:24 lg:px-36">
           <Home />
@@ -41,7 +42,7 @@ function App() {
         <section className="aboutMarquee">
           <AboutMarquee />
         </section>
-        <section className="introSection overflow-hidden max-sm:px-5 md:px-24 lg:px-36">
+        <section className="introSection overflow-hidden max-sm:px-5 md:px-24 lg:px-36 2xl:px-36">
           <Aboutme />
         </section>
         <section className="aboutMarquee">
@@ -51,7 +52,7 @@ function App() {
           <Project />
         </section>
         <ContactMarquee />
-        <section className="contactSection overflow-hidden py-32 px-36 max-sm:px-3 md:px-24">
+        <section className="contactSection overflow-hidden py-32 max-sm:px-3 md:px-24">
           <Contact />
         </section>
         <Footer />

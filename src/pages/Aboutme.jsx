@@ -3,8 +3,13 @@ import Profile from "../images/Profile picture_2.jpg";
 import { Tooltip, IconButton } from "@material-tailwind/react";
 import QrInstagram from "../images/fikrinurdiega__qr.png";
 import Technologies from "../components/techstack";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import "aos/dist/aos.css";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function Aboutme() {
   const [scale, setScale] = useState(1); // Default scale 1 (tanpa zoom)
@@ -31,9 +36,9 @@ function Aboutme() {
           data-aos="fade-right"
           data-aos-duration="1500"
         >
-          <div className="w-full h-fit md:h-full  2xl:h-full max-lg:h-fit 2xl:pt-0 lg:pt-52 shadow-md overflow-hidden hover:drop-shadow-glow">
+          <div className="box w-full h-fit 2xl:h-full 2xl:pt-0 shadow-md overflow-hidden hover:drop-shadow-glow">
             <img
-              className="w-full h-fit scale-100 object-cover 2xl:scale-150 lg:scale-300 "
+              className="w-full h-fit scale-100 object-cover 2xl:scale-150"
               src={Profile}
               alt="Its me"
               style={{ transform: `scale(${scale})` }}
@@ -44,26 +49,23 @@ function Aboutme() {
         <div
           className="col-span-1 md:col-span-2"
           data-aos="fade-left"
-          data-aos-duration="1800"
+          data-aos-duration="500"
         >
           <div className="hover:drop-shadow-glow w-full h-full px-10 shadow-md overflow-hidden 2xl:h-full lg:h-fit max-md:py-0 max-md:px-2 md:px-5 max-sm:px-1 max-sm:py-0">
             <h1 className="font-bold text-right 2xl:text-right 2xl:text-[40px] xs:text-[30px] max-xs:text-[30px] max-xs:text-left xs:text-left">
               I'm Fikri Nur Diega
             </h1>
             <p className="text-normal leading-loose 2xl:text-[24px] 2xl:text-justify xs:text-justify max-xs:text-justify">
-              I'm a Web Developer with a passion for creating engaging and
-              interactive online experiences. With my extensive experience in
-              Web development, I am determined to provide creative solutions and
-              present outstanding designs to users. Passionate about Web
-              Development and Innovation Technology, with an overall experience
-              of 3 years in Web Development I have gathered experience in the
-              field of Web Development.
+              I'm a Web Developer with a passion for creating engaging and interactive online experiences. With my
+              extensive experience in Web development, I am determined to provide creative solutions and present
+              outstanding designs to users. Passionate about Web Development and Innovation Technology, with an overall
+              experience of 3 years in Web Development I have gathered experience in the field of Web Development.
             </p>
           </div>
         </div>
         {/* Tech Stack */}
         <div
-          className="col-span-1 md:col-span-1 lg:col-span-2 pt-10"
+          className="col-span-1 md:col-span-1 lg:col-span-2 pt-3"
           data-aos="fade-right"
           data-aos-duration="1500"
         >
@@ -82,24 +84,19 @@ function Aboutme() {
           data-aos="fade-left"
           data-aos-duration="1900"
         >
-          <div className="mt-5 w-full h-full shadow-md overflow-hidden max-sm:w-full">
-            <h1 className="uppercase pb-3 tracking-wide text-3xl text-right font-bold 2xl:text-[35px] xs:text-[30px] max-xs:text-[30px] max-xs:text-left xs:text-left">
+          <div className="w-full h-full shadow-md overflow-hidden max-sm:w-full">
+            <h1 className="uppercase pb-3 tracking-wide text-3xl text-right font-bold 2xl:text-[35px] xs:text-[30px] max-xs:text-[30px] max-xs:text-left xs:text-left md:text-[25px]">
               Work Experience
             </h1>
             <div className="border-2 p-5 max-sm:px-4 max-sm:py-10">
               <ol class="relative border-s border-gray-200 dark:border-gray-700">
                 <li class="mb-4 ms-4">
                   <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                  <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-                    Freelance
-                  </time>
-                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Web Developer
-                  </h3>
+                  <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Freelance</time>
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Web Developer</h3>
                   <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-                    Engaging and responsive user interfaces are created using
-                    HTML, CSS, and JavaScript. Robust systems are developed with
-                    React JS, Codeigniter and Laravel
+                    Engaging and responsive user interfaces are created using HTML, CSS, and JavaScript. Robust systems
+                    are developed with React JS, Codeigniter and Laravel
                   </p>
                 </li>
                 <li class="mb-4 ms-4">
@@ -111,11 +108,9 @@ function Aboutme() {
                     Data Migration Analyst (Project Based)
                   </h3>
                   <p class="text-base font-normal text-gray-500 dark:text-gray-400">
-                    In-depth analysis of existing data is conducted to identify
-                    and resolve inconsistencies, inaccuracies, and anomalies.
-                    Excel functions and tools are utilized to develop and
-                    implement data cleansing strategies, ensuring optimal data
-                    integrity and quality
+                    In-depth analysis of existing data is conducted to identify and resolve inconsistencies,
+                    inaccuracies, and anomalies. Excel functions and tools are utilized to develop and implement data
+                    cleansing strategies, ensuring optimal data integrity and quality
                   </p>
                 </li>
                 <li class="mb-4 ms-4">
@@ -123,14 +118,11 @@ function Aboutme() {
                   <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                     MGI Esports Media
                   </time>
-                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Graphic Designer
-                  </h3>
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Graphic Designer</h3>
                   <p class="text-base font-normal text-gray-500 dark:text-gray-400">
-                    Creates visually stunning and relevant graphic designs
-                    tailored to the needs of esports clients, working
-                    independently as a freelancer while collaborating closely
-                    with MGI Esports Media's creative team
+                    Creates visually stunning and relevant graphic designs tailored to the needs of esports clients,
+                    working independently as a freelancer while collaborating closely with MGI Esports Media's creative
+                    team
                   </p>
                 </li>
                 <li class="ms-4">
@@ -138,13 +130,10 @@ function Aboutme() {
                   <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
                     PT. Indonesia Toray Synthetics
                   </time>
-                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Information System Staff Intern
-                  </h3>
+                  <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Information System Staff Intern</h3>
                   <p class="text-base font-normal text-gray-500 dark:text-gray-400">
-                    Gain practical experience in managing and supporting the
-                    company's IT infrastructure by assisting with maintenance
-                    and troubleshooting of hardware and software systems
+                    Gain practical experience in managing and supporting the company's IT infrastructure by assisting
+                    with maintenance and troubleshooting of hardware and software systems
                   </p>
                 </li>
               </ol>
@@ -153,11 +142,11 @@ function Aboutme() {
         </div>
         {/* Award & Certification */}
         <div
-          className="hover:drop-shadow-glow md:col-span-1 lg:col-span-2 pt-10"
+          className="hover:drop-shadow-glow md:col-span-1 lg:col-span-2 pt-5 md:pt-0"
           data-aos="fade-right"
           data-aos-duration="1500"
         >
-          <p className="pb-3 tracking-wide uppercase font-bold 2xl:text-[40px] xs:text-[25px] max-xs:text-[25px] max-xs:text-left xs:text-left">
+          <p className="pb-3 tracking-wide uppercase font-bold 2xl:text-[40px] xs:text-[23px] max-xs:text-[23px] max-xs:text-left xs:text-left">
             Award & Certification
           </p>
           <div className="p-10 w-full h-fit border-2 shadow-md overflow-hidden max-sm:w-full max-sm:h-fit max-sm:py-8">
@@ -184,11 +173,9 @@ function Aboutme() {
                   Released on November 17th, 2023
                 </time>
                 <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
-                  The Scrum Foundation Professional Certification (SFPC) is an
-                  entry-level certification that validates a fundamental
-                  understanding of Scrum principles, practices, and roles. It
-                  demonstrates proficiency in applying Scrum methodologies to
-                  enhance teamwork, productivity, and project management.
+                  The Scrum Foundation Professional Certification (SFPC) is an entry-level certification that validates
+                  a fundamental understanding of Scrum principles, practices, and roles. It demonstrates proficiency in
+                  applying Scrum methodologies to enhance teamwork, productivity, and project management.
                 </p>
               </li>
               <li class="mb-10 ms-6">
@@ -213,11 +200,9 @@ function Aboutme() {
                   Released on December 18th, 2020
                 </time>
                 <p class="text-base font-normal text-gray-500 dark:text-gray-400">
-                  The 2nd IT Support Competition at Tangerang Raya Kompeten is a
-                  regional competition that tests participants' technical skills
-                  and problem-solving abilities in IT support. It brings
-                  together talented individuals to showcase their expertise in
-                  troubleshooting and IT infrastructure management.
+                  The 2nd IT Support Competition at Tangerang Raya Kompeten is a regional competition that tests
+                  participants' technical skills and problem-solving abilities in IT support. It brings together
+                  talented individuals to showcase their expertise in troubleshooting and IT infrastructure management.
                 </p>
               </li>
             </ol>
