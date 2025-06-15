@@ -56,9 +56,9 @@ function Contact() {
                 <a
                   className="text-xl font-semibold text-center border rounded-full px-3 py-1"
                   id="contactsHover"
-                  href="https://drive.google.com/file/d/1N-qwOEDZdSfLIku6MmVt9ajgfX869Jzr/view?usp=drive_link"
+                  href="https://drive.google.com/file/d/105yGAkipPGE4hwbMjszZ1qV3WcrK1YyX/view?usp=sharing"
                 >
-                  Resume
+                  CV
                 </a>
               </div>
             </div>

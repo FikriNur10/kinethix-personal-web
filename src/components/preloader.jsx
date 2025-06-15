@@ -23,9 +23,9 @@ function preloader() {
     <div className="preloader">
       <div className="texts-container flex gap-5 text-lg max-sm:px-5 max-sm:gap-1 max-sm:text-[10px] max-sm:flex-col max-sm:items-center">
         <span className="2xl:hidden md:hidden">Welcome</span>
-        <span className="max-sm:hidden">Developer</span>
-        <span className="max-sm:hidden">Graphic Designer</span>
-        <span className="max-sm:hidden">UI/UX Designer</span>
+        <span className="max-sm:hidden">Web Developer</span>
+        <span className="max-sm:hidden">Fullstack Developer</span>
+        <span className="max-sm:hidden">System Designer</span>
       </div>
     </div>
   );

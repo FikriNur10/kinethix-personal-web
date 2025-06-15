@@ -4,6 +4,7 @@ import Aboutme from "./pages/Aboutme";
 import Header from "./components/header";
 import Project from "./pages/Project";
 import Contact from "./pages/Contact";
+import ContactMe from "./pages/ContactMe";
 import Footer from "./components/footer";
 import AboutMarquee from "./components/aboutMarquee";
 import ProjectMarquee from "./components/projectMarquee";
@@ -42,7 +43,7 @@ function App() {
         <section className="aboutMarquee">
           <AboutMarquee />
         </section>
-        <section className="introSection overflow-hidden max-sm:px-5 md:px-24 lg:px-36 2xl:px-36">
+        <section className="introSection overflow-hidden max-sm:px-14 md:px-16 lg:px-40 2xl:px-48">
           <Aboutme />
         </section>
         <section className="aboutMarquee">
@@ -55,7 +56,11 @@ function App() {
         <section className="contactSection overflow-hidden py-32 max-sm:px-3 md:px-24">
           <Contact />
         </section>
+        {/* <section className="py-32 max-sm:px-3 md:px-24 bg-gray-300">
+          <ContactMe />
+        </section> */}
         <Footer />
+        
       </div>
     </>
   );

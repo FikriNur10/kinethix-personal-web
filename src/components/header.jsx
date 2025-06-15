@@ -47,7 +47,7 @@ function Header() {
           <span className="hover:animate-pulse">
             <Link
               to="#"
-              onClick={() => window.scrollTo({ top: 2800, behavior: "smooth" })}
+              onClick={() => window.scrollTo({ top: 2700, behavior: "smooth" })}
               className="px-5 mx-2 hover:underline md:px-2"
             >
               Projects
@@ -56,7 +56,7 @@ function Header() {
           <span className="hover:animate-pulse">
             <Link
               to="#"
-              onClick={() => window.scrollTo({ top: 4300, behavior: "smooth" })}
+              onClick={() => window.scrollTo({ top: 5200, behavior: "smooth" })}
               className="px-5 mx-2 hover:underline md:px-2"
             >
               Contact

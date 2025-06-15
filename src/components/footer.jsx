@@ -17,7 +17,7 @@ function Footer() {
           <p>Let's collaborate on future projects to achieve even greater success.</p>
         </div>
         <div className="text-center max-sm:text-[10px]">
-          <p>Copyright &copy; 2024 Fikri Nur Diega, Develop by Fikri Nur Diega.</p>
+          <p>Copyright &copy; 2025 Fikri Nur Diega, Develop by Fikri Nur Diega.</p>
         </div>
       </div>
     </footer>

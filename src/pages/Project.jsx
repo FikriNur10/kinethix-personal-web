@@ -7,8 +7,18 @@ function Project() {
   return (
     <div>
       <div className="py-[170px] max-sm:py-10 max-sm:px-5">
+        {/* Header */}
+        <div className="flex justify-center items-center">
+          <h1
+            className="font-bold uppercase text-white text-center 2xl:text-[50px] max-sm:text-[30px] md:text-[40px]"
+            data-aos="fade-right"
+            data-aos-duration="1500"
+          >
+            My Projects
+          </h1>
+        </div>
         {/* Change col-span-1 to grid */}
-        <div className="grid grid-cols-2 gap-5 py-10 justify-center justify-items-center 2xl:grid-cols-2 max-sm:grid-cols-1 sm:grid-cols-1 md:grid-cols-2">
+        <div className="rid gap-5 py-10 grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3">
           <ProjectCard />
         </div>
       </div>
